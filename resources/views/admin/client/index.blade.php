@@ -8,9 +8,12 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
+            <div class="col-sm-9">
                 <h1 class="m-0">Пользователи</h1>
             </div><!-- /.col -->
+            <div class="col-sm-3">
+                <a href="{{ route('clientEditAll', $client[0]['id']) }}" class="btn btn-block bg-gradient-success">Изменить общие каналы</a>
+            </div>
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
@@ -30,24 +33,28 @@
 
         <div class="card">
             <div class="card-body p-0">
-                <table class="table table-striped projects">
+                
+                <table class="table table-striped projects" style="table-layout: fixed;width:100%">
                     <thead>
                         <tr>
-                            <th style="width: 15%">
+                            <th style="15%">
                                 id пользователя
                             </th>
-                            <th style="width: 20%">
+                            <th style="20%">
                                 Имя пользователя
                             </th>
-                            <th style="width: 40%">
+                            <th>
                                 Ссылки на каналы
                             </th>
-                            <th style="width: 25%">
+                            <th>
+                                Каналы
+                            </th>
+                            <th >
+
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach($client as $client_item)
                         <tr>
                             <td>
@@ -56,8 +63,11 @@
                             <td>
                                 {{ $client_item['name_client'] }}
                             </td>
+                            <td style="width: 30%;">
+                                <div>{{ $client_item['link_channel'] }}</div>
+                            </td>
                             <td>
-                                {{ $client_item['link_channel'] }}
+                                {{ $client_item['link_channel_admin'] }}
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="{{ route('client.edit', $client_item['id']) }}">

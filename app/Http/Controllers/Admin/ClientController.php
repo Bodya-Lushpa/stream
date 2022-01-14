@@ -67,6 +67,37 @@ class ClientController extends Controller
             'client' => $client
         ]);
     }
+    
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Client  $client
+     * @return \Illuminate\Http\Response
+     */
+    public function editAll(Client $client)
+    {
+        $clients = Client::get();
+        return view('admin.client.editAll', [
+            'client' => $clients
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Client  $client
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAll(Request $request)
+    {
+        Client::query()->update(["link_channel_admin" => $request->link_channel_admin]);
+        // $client->link_channel_admin = $request->link_channel_admin;
+        // $client->save();
+       
+
+        return redirect()->back()->withSuccess('Информация обновлена!');
+    }
 
     /**
      * Update the specified resource in storage.
@@ -77,7 +108,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $client->link_channel = $request->link_channel;
+        $client->link_channel_admin = $request->link_channel_admin;
         $client->save();
 
         return redirect()->back()->withSuccess('Информация обновлена!');

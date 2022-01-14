@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientsTable extends Migration
+class UpdateTableClients extends Migration
 {
     /**
      * Run the migrations.
@@ -19,6 +19,8 @@ class CreateClientsTable extends Migration
             $table->string('name_client');
             $table->text('link_channel');
             $table->text('last_video');
+            $table->text('link_channel_admin');
+            $table->text('last_video_admin');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        //
     }
 }

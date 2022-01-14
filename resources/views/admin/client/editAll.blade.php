@@ -1,6 +1,6 @@
 @extends('layouts/admin_layout')
 
-@section('title', 'Редактирование пользователей')
+@section('title', 'Редактирование общих каналов пользователей')
 
 @section('content')
 
@@ -8,8 +8,8 @@
  <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Редактирование пользователей</h1>
+          <div class="col-sm-9">
+            <h1 class="m-0">Редактирование общих каналов пользователей</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -31,14 +31,14 @@
                                     </div>
                                 </div>
                             @endif 
-                        
-                        <form action="{{ route('client.update', $client['id_client']) }}" method="POST">
+                           
+                        <form action="{{ route('clientUpdateAll') }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Ссылки на каналы</label>
-                                <input type="text" value="{{ $client['link_channel'] }}" class="form-control" name="link_channel" id="exampleInputEmail1" placeholder="Ссылки на каналы">
+                                <input type="text" value="{{ $client[0]['link_channel_admin'] }}" class="form-control" name="link_channel_admin" id="exampleInputEmail1" placeholder="Ссылки на каналы">
                             </div>
                            
                             

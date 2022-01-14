@@ -25,5 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('homeAdmin');
 
+
+    Route::put('client', [ClientController::class, 'updateAll'])->name('clientUpdateAll');
+    Route::get('client-edit-all', [ClientController::class, 'editAll'])->name('clientEditAll');
     Route::resource('client', ClientController::class);
 });
